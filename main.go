@@ -183,10 +183,8 @@ func build(builder gin.Builder, runner gin.Runner, logger *log.Logger) {
 		logger.Printf("%sERROR! Build failed.%s\n", colorRed, colorReset)
 		fmt.Println(builder.Errors())
 	} else {
-		// print success only if there were errors before
-		if buildError != nil {
-			logger.Printf("%sBuild Successful%s\n", colorGreen, colorReset)
-		}
+		// [zealotnt] print success event if there were no errors before
+		logger.Printf("%sBuild Successful%s\n", colorGreen, colorReset)
 		buildError = nil
 		if immediate {
 			runner.Run()
